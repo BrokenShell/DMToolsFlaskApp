@@ -18,7 +18,7 @@ def monster_results():
         "monster-results.html",
         monster=Monster(
             cr=int(request.form.get('cr')),
-            monster_type=request.form.get('monstertype'),
+            monster_type=request.form.get('monster_type'),
         ).to_dict().items(),
     )
 
@@ -42,7 +42,7 @@ def trap_results():
         "trap-results.html",
         trap=random_trap(
             cr=int(request.form.get('cr')),
-            dam_type=request.form.get('damagetype'),
+            dam_type=request.form.get('damage_type'),
         ).to_dict().items(),
     )
 
