@@ -10,11 +10,17 @@ app = Flask(__name__)
 @app.route('/')
 @app.route("/monster")
 def monster():
+    return render_template("monster.html")
+
+
+@app.route("/monster-results", methods=['POST'])
+def monster_results():
     return render_template(
-        "monster.html",
-        monster=Monster(distribution_range(
-            front_poisson, -3, 30,
-        )).to_dict().items(),
+        "monster-results.html",
+        monster=Monster(
+            cr=int(request.form.get('cr')),
+            monster_type=request.form.get('monstertype').title(),
+        ).to_dict().items(),
     )
 
 
@@ -28,12 +34,23 @@ def npc():
 
 @app.route("/trap")
 def trap():
+    return render_template("trap.html")
+
+
+@app.route("/trap-results", methods=['POST'])
+def trap_results():
     return render_template(
-        "trap.html",
-        trap=random_trap(distribution_range(
-            front_poisson, -3, 30,
-        )).to_dict().items(),
+        "trap-results.html",
+        trap=random_trap(
+            cr=int(request.form.get('cr')),
+            dam_type=request.form.get('damagetype'),
+        ).to_dict().items(),
     )
+
+
+@app.route("/dungeon")
+def dungeon():
+    return render_template("dungeon.html")
 
 
 @app.route("/dungeon-results", methods=['POST'])
@@ -48,11 +65,6 @@ def dungeon_results():
             make_traps=bool(request.form.get("traps")),
         ),
     )
-
-
-@app.route("/dungeon")
-def dungeon():
-    return render_template("dungeon.html")
 
 
 if __name__ == '__main__':
