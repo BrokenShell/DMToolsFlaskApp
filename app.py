@@ -38,11 +38,14 @@ def trap():
 
 @app.route("/trap-results", methods=['POST'])
 def trap_results():
+    dam_type = request.form.get('damage_type')
+    if dam_type == 'random':
+        dam_type = None
     return render_template(
         "trap-results.html",
         trap=random_trap(
             cr=int(request.form.get('cr')),
-            dam_type=request.form.get('damage_type'),
+            dam_type=dam_type,
         ).to_dict().items(),
     )
 
