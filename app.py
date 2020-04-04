@@ -19,7 +19,7 @@ def monster_results():
         "monster-results.html",
         monster=Monster(
             cr=int(request.form.get('cr')),
-            monster_type=request.form.get('monstertype').title(),
+            monster_type=request.form.get('monstertype'),
         ).to_dict().items(),
     )
 
