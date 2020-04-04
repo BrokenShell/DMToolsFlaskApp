@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 from MonsterGen import Monster, random_trap, Npc
-from DungeonLib import Dungeon
+from DungeonGenerator import Dungeon
 
 
 app = Flask(__name__)
