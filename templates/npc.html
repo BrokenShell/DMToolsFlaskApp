@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Random NPC</h1>
+    <p>
+    {% for k, v in npc %}
+        <span>{{ k }}: {{ v }}</span><br>
+    {% endfor %}
+    </p>
+{% endblock %}

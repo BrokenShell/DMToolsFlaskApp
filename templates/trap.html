@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Random Trap</h1>
+    <p>
+    {% for k, v in trap %}
+        <span>{{ k }}: {{ v }}</span><br>
+    {% endfor %}
+    </p>
+{% endblock %}
