@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template
 from MonsterGen import Monster, random_trap, Npc
 from DungeonLib import Dungeon
-from Fortuna import distribution_range, front_poisson
 
 
 app = Flask(__name__)
